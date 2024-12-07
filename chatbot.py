@@ -38,7 +38,7 @@ class ChatBot:
 
 if __name__ == "__main__":
     # Carrega variáveis de ambiente do arquivo .env
-    load_dotenv(dotenv_path= f'C:/Users/lc18v/Documents/PIBIC/MATRIX/chat-bot-matrix/config.env')
+    load_dotenv(dotenv_path= 'C:/Users/lc18v/Documents/PIBIC/Infos/chatbot/config.env')
     
     # Configurações do bot
     HOMESERVER = os.getenv("HOMESERVER")
