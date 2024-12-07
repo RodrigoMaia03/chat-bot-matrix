@@ -1,3 +1,4 @@
+'''
 from dotenv import load_dotenv
 import os
 import nio
@@ -5,8 +6,9 @@ import asyncio
 
 class ChatBot:
     def __init__(self, homeserver, user_id, access_token):
+        # Inicializa o cliente com o servidor e o ID do usuário
         self.client = nio.AsyncClient(homeserver, user_id, store_path="./store")
-        self.client.access_token = access_token
+        self.client.access_token = access_token  # Define o access token
         self.last_event_id = None
         self.initial_sync_done = False
 
@@ -34,18 +36,16 @@ class ChatBot:
     async def main(self):
         self.client.add_event_callback(self.message_callback, nio.RoomMessageText)
         await self.initial_sync()  # Faz a sincronização inicial
-        await self.client.sync_forever(10000)  # Continua sincronizando para novas mensagens
+        await self.client.sync_forever(30000)  # Continua sincronizando para novas mensagens
 
 if __name__ == "__main__":
     # Carrega variáveis de ambiente do arquivo .env
     load_dotenv(dotenv_path= f'C:/Users/lc18v/Documents/PIBIC/MATRIX/chat-bot-matrix/config.env')
-    
-    # Configurações do bot
+
     HOMESERVER = os.getenv("HOMESERVER")
     USER_ID = os.getenv("USER_ID")
     ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 
     bot = ChatBot(HOMESERVER, USER_ID, ACCESS_TOKEN)
-    
-    # Executa o bot
     asyncio.run(bot.main())
+'''
